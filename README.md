@@ -11,8 +11,12 @@ E.g.
 ```bash
 docker container run -it francesco086/pipenv
 
-motoko@4bdfe04a4e0b:~$ pyenv versions
+motoko@...:~$ pyenv versions
 * 3.7.2 (set by /home/motoko/.pyenv/version)
 
-
+motoko@...:~$ mkdir myproject
+motoko@...:~$ cd myproject
+motoko@...:~$ pipenv install requests
+motoko@...:~$ ls
+Pipfile  Pipfile.lock
 ```
