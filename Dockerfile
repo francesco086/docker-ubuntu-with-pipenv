@@ -21,6 +21,9 @@ RUN curl https://pyenv.run | bash
 # update path to use pyenv
 ENV PATH /home/motoko/.pyenv/bin:/home/motoko/.local/bin:$PATH
 
+# set some other local environment variables
+ENV LANG "en_US.UTF-8"
+
 # set the bashrc
 RUN echo "eval \"\$(pyenv init -)\"" >> .bashrc && \
     echo "eval \"\$(pyenv virtualenv-init -)\"" >> .bashrc
