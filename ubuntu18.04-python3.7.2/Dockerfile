@@ -1,15 +1,15 @@
 FROM ubuntu:18.04
 
-# use login bash shell as default
-SHELL ["/bin/bash", "-lc"]
+# use bash shell as default
+SHELL ["/bin/bash", "-c"]
 
 # install python, pip and pipenv
 RUN apt-get update && \
-    apt-get install -y curl git gcc make openssl libssl-dev libbz2-dev libreadline-dev libsqlite3-dev zlib1g-dev libffi-dev
+    apt-get install -y sudo curl git gcc make openssl libssl-dev libbz2-dev libreadline-dev libsqlite3-dev zlib1g-dev libffi-dev
 
 # add the user Motoko, tribute to https://en.wikipedia.org/wiki/Motoko_Kusanagi
-RUN useradd --create-home --groups root --no-log-init --system  motoko && \
-	echo "motoko:kusanagi" | chpasswd
+RUN useradd --create-home --no-log-init --system  motoko && \
+	echo "motoko	ALL = (ALL) NOPASSWD: ALL" >> /etc/sudoers
 USER motoko
 WORKDIR /home/motoko
 
@@ -27,6 +27,9 @@ RUN echo "eval \"\$(pyenv init -)\"" > ~/.bashrc && \
     echo "eval \"\$(pyenv virtualenv-init -)\"" >> ~/.bashrc && \
 	echo "eval \"\$(pyenv init -)\"" > ~/.bash_profile && \
     echo "eval \"\$(pyenv virtualenv-init -)\"" >> ~/.bash_profile
+	
+# use login bash shell as default from now on, so that the bash_profile is sourced before any RUN command
+SHELL ["/bin/bash", "-lc"]
 
 # install python 3.7.2, upgrade pip, and install pipenv
 RUN pyenv update && \
