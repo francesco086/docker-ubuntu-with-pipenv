@@ -3,6 +3,7 @@
 Dockerfile that generates a docker image with Ubuntu and a user `motoko` that has [pyenv](https://github.com/pyenv/pyenv) with python, pip, and [pipenv](https://pipenv.readthedocs.io/en/latest/) pre-installed.
 
 When a container is run using this image, the commands are run automatically as `motoko` user.
+However, `motoko` will be able to run any command with the `sudo` command without need of authenticating itself.
 
 This is intended for simulating a real-case scenario, where a user wants to have pyenv installed at a user level, to avoid messes with root bins.
 
