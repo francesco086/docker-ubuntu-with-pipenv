@@ -81,3 +81,13 @@ Out[2]:
 2    6
 dtype: int64
 ```
+
+
+# For the developers
+
+In the root folder there is the Docker template, where one does not need to specify the Ubuntu tag to use (`UBUNTU_TAG`) and the python version (`PYTHON_VERSION`).
+
+There will then be several folder with a name format `ubuntu*-python*` (e.g. `ubuntu18.04-python3.7.2`).
+The script `propagate_dockerfile_to_subfolders.sh` can be used to copy the Dockerfile template in each folder and set the proper `UBUNTU_TAG` and `PYTHON_VERSION`.
+
+Thanks to this mechanism, it is possible to abstract from the specific versions of Ubuntu and python.
