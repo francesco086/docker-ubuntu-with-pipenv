@@ -11,8 +11,8 @@ do
     python_version=$( echo $folder | sed 's/ubuntu[0-9\.]*-python\([0-9\.]*\)/\1/' )
     
     # insert the ubuntu tag and python version in the Dockerfile
-    sed -i.bak "s/UBUNTU_TAG/$ubuntu_tag/" $folder/Dockerfile
-    sed -i.bak "s/PYTHON_VERSION/$python_version/" $folder/Dockerfile
+    sed -i.bak "s/UBUNTU_TAG/$ubuntu_tag/g" $folder/Dockerfile
+    sed -i.bak "s/PYTHON_VERSION/$python_version/g" $folder/Dockerfile
     rm -f $folder/*.bak
     
 done
