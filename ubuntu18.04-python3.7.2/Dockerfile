@@ -5,7 +5,7 @@ SHELL ["/bin/bash", "-c"]
 
 # install python, pip and pipenv
 RUN apt-get update && \
-    apt-get install -y sudo curl git gcc make openssl libssl-dev libbz2-dev libreadline-dev libsqlite3-dev zlib1g-dev libffi-dev
+    apt-get install -y sudo curl llvm git gcc make openssl libssl-dev libbz2-dev libreadline-dev libncurses5-dev libsqlite3-dev zlib1g-dev libffi-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev liblzma-dev
 
 # add the user Motoko, tribute to https://en.wikipedia.org/wiki/Motoko_Kusanagi
 RUN useradd --create-home --no-log-init --system  motoko && \
